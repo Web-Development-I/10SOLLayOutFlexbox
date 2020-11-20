@@ -1,0 +1,350 @@
+/*Algemene opmaak en layout voor mobile (<481px) */
+
+/* 
+achtergrond - kleur -lettertype - lijn hoogte - breedte
+box-sizing activeren en een kleiner lettertype
+*/
+
+header,
+section,
+aside,
+article,
+footer,
+.description {
+  box-sizing: border-box;
+  padding-left: 0.5em;
+}
+
+body {
+  background-color: #ffffff;
+  color: #666666;
+  font-family: Verdana, Arial, sans-serif;
+  line-height: 1.2em;
+  width: 100%;
+}
+
+/* achtergrond instellen */
+
+header {
+  background-color: #aeaca8;
+}
+
+/* Uit commentaar, nadat picture is toegevoegd in html */
+
+header > picture {
+  display: none;
+}
+
+/* 
+tekst ipv afbeelding voor de laagste resolutie
+font vergroten - breedte en float want icoon voor uitklapmenu moet ernaast komen
+*/
+
+h1 {
+  color: #de6581;
+  padding: 0.5em;
+  font-size: 1.5em;
+  width: 75%;
+  /* float: left; */
+}
+
+/* MOGELIJKE OPLOSSING voor 1.*/
+nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ul naar de tweede lijn duwen */
+nav ul {
+  flex: 0 0 100%;
+}
+
+/*Uitklapmenu - icon */
+
+/*Niet zichtbaar - positionering tov browservenster - nog een beetje opmaak*/
+
+nav ul {
+  display: none;
+  background-color: #aeaca8;
+}
+
+/* zichtbaar maken bij hoveren*/
+
+nav:hover ul {
+  display: block;
+}
+
+/* opmaak uitklapmenu */
+
+nav li {
+  border-bottom: 1px solid #eee;
+}
+
+nav li:last-child {
+  border-bottom: 0;
+}
+
+nav li a {
+  display: block;
+  padding: 0.5em 0.8em;
+  color: black;
+}
+
+nav li a:hover {
+  color: #de6581;
+  background-color: #666666;
+}
+
+nav li a.current {
+  color: #000000;
+  cursor: default;
+}
+
+/* Einde menu */
+
+/*
+kleiner lettertype voor p en a in section
+*/
+
+section p,
+section a {
+  font-size: 0.8em;
+}
+
+/*
+opmaak afbeeldingen dimensies komen overeen met dimensies van *-small.jpg
+en extra ruimte onderaan voor de figcaption - centreren
+*/
+
+figure {
+  max-width: 218px;
+  max-height: 170px;
+  padding: 1em 1em 0;
+  border: 1px solid #eeeeee;
+}
+
+figcaption {
+  font-size: 90%;
+  text-align: left;
+}
+
+.description {
+  padding-top: 0.2em;
+  padding-bottom: 0.5em;
+}
+
+/*
+opmaak anchors
+*/
+
+aside section a {
+  display: block;
+  padding: 1em;
+  border-bottom: 1px solid #eeeeee;
+}
+
+aside section a:hover {
+  color: #985d6a;
+  background-color: #efefef;
+}
+
+a {
+  color: #de6581;
+  text-decoration: none;
+}
+
+/*
+opmaak headings
+*/
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.3em;
+  padding: 0.5em 0 0.1em;
+}
+
+h3 {
+  font-size: 1.1em;
+  padding: 0.4em 0;
+  color: #de6581;
+}
+
+/* tussenlijntje met section */
+
+aside {
+  border-top: 1px solid #eee;
+}
+
+/*
+opmaak nav en footer
+*/
+
+nav,
+footer {
+  color: #ffffff;
+  background-color: #aeaca8;
+}
+
+/*
+specifieke opmaak voor footer
+*/
+
+footer {
+  text-align: center;
+  font-size: 75%;
+}
+
+/*Layout voor mobile (>480px) */
+
+/*
+Enkel de eigenschappen aangepast die wijzigen tov de algemene instellingen
+*/
+
+@media screen and (min-width: 480px) {
+  /*header-medium.jpg tonen, hoogte (hoogte image)*/
+  header {
+    padding: 0;
+  }
+  header > picture {
+    display: block;
+    max-height: 65px;
+    background-image: url(../images/header-medium-bg.jpg);
+    background-repeat: repeat-x;
+    background-position: top right;
+  }
+  /*h1 uit scherm verwijderen */
+  h1 {
+    display: none;
+  }
+  /*icoon verbergen */
+  nav > a {
+    display: none;
+  }
+  /* horizontale menubalk */
+  nav {
+    margin-top: 2px;
+  }
+  nav ul {
+    display: block;
+    padding: 0.1em;
+  }
+  nav li {
+    /* display: inline-block; */
+    padding-left: 0.5em;
+    margin-right: 0.5em;
+    border-bottom: 0;
+  }
+
+  /* 
+    Mogelijke OPLOSSING voor 2.
+    Merk op dat er een klein beetje minder ruimte tussen
+    de items is, omdat de spaties weggevallen zijn.
+    Eventueel zou dit kunnen gecompenseerd worden met een beetje
+    extra margin.
+    */
+  nav ul {
+    display: flex;
+  }
+  nav ul:hover {
+    display: flex;
+  }
+
+  /* Mogelijke OPLOSSING vor 4. */
+  body {
+    display: grid;
+    grid-template-areas:
+      'header  header'
+      'section aside'
+      'footer  footer';
+    grid-template-columns: 55% 45%;
+  }
+
+  header {
+    grid-area: header;
+  }
+  section.courses {
+    grid-area: section;
+  }
+  aside {
+    grid-area: aside;
+  }
+  footer {
+    grid-area: footer;
+  }
+
+  /*courses floating left - width van 55% */
+  /* section.courses { */
+  /*  float: left; */
+  /*  width: 55%; */
+  /* } */
+
+  /* aside floating */
+  aside {
+    /*  width: 45%;* /
+    /*  float: left; */
+    border-top: 0px;
+  }
+  /*footer geen floating*/
+  /* footer { */
+  /*   clear: both; */
+  /* } */
+
+  /* overige opmaak */
+  figure {
+    margin: 2em 0 0;
+  }
+  section.popular-recipes,
+  section.contact-details {
+    padding-top: 2em;
+  }
+}
+
+/*Layout voor desktop (>992px) */
+
+@media screen and (min-width: 992px) {
+  header > picture {
+    max-height: 130px;
+    background-image: url(../images/header-bg.jpg);
+  }
+  nav li {
+    padding-left: 1em;
+    font-size: 1.1em;
+  }
+
+  /* Mogelijke OPLOSSING vor 4. vervolg */
+  body {
+    grid-template-columns: 70% 30%;
+  }
+
+  /* section.courses {
+        width: 70%;
+    }
+    aside {
+        width: 30%;        
+    } */
+
+  figure {
+    /* float: left; */
+    max-width: 290px;
+    max-height: 220px;
+    margin-right: 1.5em;
+  }
+
+  /* Mogelijke OPLOSSING voor 3.*/
+  article {
+    display: flex;
+  }
+
+  article {
+    overflow: auto;
+    width: 100%;
+  }
+  .description {
+    padding-top: 1.5em;
+  }
+}
