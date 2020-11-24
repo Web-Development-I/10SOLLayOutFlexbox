@@ -120,7 +120,6 @@ nav a {
   color: white;
   /* we zorgen voor een grotere click area */
   display: block;
-  width: 100%;
   padding: 0.5rem 0;
 }
 
